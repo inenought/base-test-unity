@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 06cf79b7a823d73409bbc26a311574b3
 ModelImporter:
-  serializedVersion: 20101
+  serializedVersion: 20300
   internalIDToNameTable:
   - first:
       74: -623603649343465320
@@ -180,7 +180,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -230,7 +230,7 @@ ModelImporter:
       name: rotating
       takeName: Scene
       internalID: 0
-      firstFrame: 231
+      firstFrame: 232
       lastFrame: 240
       wrapMode: 0
       orientationOffsetY: 0
@@ -319,6 +319,8 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
