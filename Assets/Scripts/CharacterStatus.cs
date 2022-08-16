@@ -11,12 +11,26 @@ namespace StatusSystem
         [SerializeField]Animator characterAnimator;
         //-----------------------
         //hmmm Coffe Break;
-        [SerializeField]float movementSpeed;
+        [SerializeField] float movementSpeed;
+        [SerializeField] float maxMovementSpeed;
 
         public float MoveSpeed
         {
             get { return movementSpeed; }
-            set { movementSpeed = value; }
+            set
+            {
+                if (value < maxMovementSpeed)
+                {
+                    movementSpeed = value;
+                }
+            }
+        }
+
+        public float MaxMoveSpeed
+        {
+            get { return maxMovementSpeed; }
+            set
+            { maxMovementSpeed = value;}
         }
 
         public int Life

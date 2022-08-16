@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using StatusSystem;
 
-public class EnemyStats : CharacterStatus
+public class EnemyStatus : CharacterStatus
 {
-    private void Start()
+    void Start()
     {
         Life = this.InitialLife;
         initPos = this.gameObject.transform;
         //----------------------------
         Anim = this.gameObject.GetComponent<Animator>();
+
     }
+
 }

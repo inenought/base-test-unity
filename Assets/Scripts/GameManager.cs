@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject CanvasHud;
     [SerializeField] GameObject CanvasUI;
-     void Awake()
+    [SerializeField] GameObject CanvasStatus;
+    void Awake()
     {
         GameControl.mainGameControl.mainGameState = GameControl.GameState.run;
     }
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     {
         CanvasHud.SetActive(true);
         CanvasUI.SetActive(false);
+        CanvasStatus.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -32,13 +34,18 @@ public class GameManager : MonoBehaviour
             case GameControl.GameState.run:
                 CanvasHud.SetActive(true);
                 CanvasUI.SetActive(false);
-                
+                Cursor.lockState = CursorLockMode.Locked;
                 break;
             case GameControl.GameState.pause:
                 CanvasHud.SetActive(false);
                 CanvasUI.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
-
+                break;
+            case GameControl.GameState.status:
+                CanvasStatus.SetActive(true);
+                CanvasHud.SetActive(false);
+                CanvasUI.SetActive(false);
+                Cursor.lockState = CursorLockMode.None;
                 break;
             case GameControl.GameState.resetScene:
                 break;

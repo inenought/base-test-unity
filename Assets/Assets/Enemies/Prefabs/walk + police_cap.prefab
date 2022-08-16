@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 224667034929791443}
   - component: {fileID: 2019270456}
   - component: {fileID: 450021776}
-  - component: {fileID: 450021777}
+  - component: {fileID: 6897797594713563313}
   m_Layer: 0
   m_Name: walk + police_cap
   m_TagString: Untagged
@@ -379,13 +379,13 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.4
-  m_Speed: 3
-  m_Acceleration: 0.1
+  m_Speed: 2
+  m_Acceleration: 3
   avoidancePriority: 50
-  m_AngularSpeed: 50
-  m_StoppingDistance: 6
+  m_AngularSpeed: 200
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1.06
   m_BaseOffset: 0
@@ -403,10 +403,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9f7a3ddb6da154ab774eb3c360acb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  sts: {fileID: 450021777}
+  sts: {fileID: 0}
   animToNavMesh: {fileID: 0}
---- !u!114 &450021777
+  MainTarget: {fileID: 0}
+  minDistanceToFollow: 0.5
+  maxDistanceToFollow: 20
+  HastoFollow: 0
+  detectedTarget: 0
+  Points:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currentTime: 0
+--- !u!114 &6897797594713563313
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -415,12 +426,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1143708335088268426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2730604900454c64b836a8f66cedf3c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d05e4457d5d70a4fa62840c7fbb513e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0
   initialLifeAmount: 100
-  characterAnimator: {fileID: 224667034929791443}
+  characterAnimator: {fileID: 0}
+  movementSpeed: 2
+  maxMovementSpeed: 3
 --- !u!1 &1164455823880049651
 GameObject:
   m_ObjectHideFlags: 0

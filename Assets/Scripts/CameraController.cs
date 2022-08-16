@@ -5,17 +5,21 @@ using UnityEngine;
 public class CameraController : UpdateManager
 {
     [SerializeField] Transform directionTarget;//player head
-    [SerializeField] Quaternion initialRot;
-    [SerializeField] Transform[] followpositions;
+    Quaternion initialRot;
+    [SerializeField] Transform followposition;
+    //
+    [Tooltip("Player transform to rotate with camera")]
+    [SerializeField] Transform playerTransform;
 
     [SerializeField] float smoothFollowTime;
     [SerializeField]Vector3 vel = Vector3.zero;
     //-------------
     RaycastHit hit;
     //-------------
+    [Tooltip("Velocity of Camera Rotation")]
     [SerializeField]float RotVelocity;
-    [SerializeField]float rotationX;
-    [SerializeField]float rotationY;
+    float rotationX;
+    float rotationY;
     //-------------
     bool rotLocked;
 
@@ -26,27 +30,31 @@ public class CameraController : UpdateManager
 
     public override void FrameUpdate()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1))
         {
-            rotLocked = !rotLocked;
+            rotLocked = false;
+        }
+        else
+        {
+            rotLocked = true;
+            RotatePlayer();
         }
     }
     public override void ByLateUpdate()
     {
         GameplayCamMode1(0,directionTarget.position);
         RotateCamera(directionTarget);
-
     }
 
     void GameplayCamMode1(int BackwardViewer, Vector3 target)
     {
         //Look on playerHead
         transform.LookAt(target);
-        if (!Physics.Linecast(target, followpositions[BackwardViewer].position, out hit))
+        if (!Physics.Linecast(target, followposition.position, out hit))
         {
             //LERP IS MORE OPTIMIZED, BUT, I HAVE NO MORE TIME, Desculpa ai Rise
-            transform.position = Vector3.SmoothDamp(transform.position, followpositions[BackwardViewer].position, ref vel, smoothFollowTime);
-            Debug.DrawLine(target, followpositions[BackwardViewer].position);
+            transform.position = Vector3.SmoothDamp(transform.position, followposition.position, ref vel, smoothFollowTime);
+            Debug.DrawLine(target, followposition.position);
         }
         else
         { transform.position = Vector3.SmoothDamp(transform.position, hit.point, ref vel, smoothFollowTime); }
@@ -58,17 +66,20 @@ public class CameraController : UpdateManager
         if (rotLocked)
         {
             point.rotation = directionTarget.parent.rotation;
-            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked;
             rotationX = Input.GetAxis("Mouse X") * RotVelocity * Time.deltaTime;
             rotationY = -Input.GetAxis("Mouse Y") * RotVelocity/4 * Time.deltaTime;
 
             point.Rotate(rotationY, rotationX,0);
         }
 
+    }
 
+    void RotatePlayer()
+    {
+        rotationX = Input.GetAxis("Mouse X") * RotVelocity * Time.deltaTime;
+        playerTransform.Rotate(0, rotationX , 0);
     }
 }
