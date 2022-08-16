@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class UpdateManager : MonoBehaviour
 {
@@ -17,8 +18,8 @@ public class UpdateManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (GameControl.mainGameControl.mainGameState == GameControl.GameState.run) { ByLateUpdate(); ChangeVelAnimation(1); };
-        if (GameControl.mainGameControl.mainGameState == GameControl.GameState.pause) { ChangeVelAnimation(0); };
+        if (GameControl.mainGameControl.mainGameState == GameControl.GameState.run) { ByLateUpdate(); ChangeVelAnimation(1); StopNavAgent(false); };
+        if (GameControl.mainGameControl.mainGameState == GameControl.GameState.pause) { ChangeVelAnimation(0); StopNavAgent(true); };
     }
     public virtual void TimeUpdate() { }
 
@@ -31,5 +32,11 @@ public class UpdateManager : MonoBehaviour
         Animator objectAnim = this.gameObject.GetComponent<Animator>() != null ? GetComponent<Animator>() : null;
         if (objectAnim != null) { objectAnim.speed = vel; }
         else { return; }
+    }
+
+    public virtual void StopNavAgent(bool state)
+    {
+        NavMeshAgent nav = this.gameObject.GetComponent<NavMeshAgent>() != null ? GetComponent<NavMeshAgent>() : null;
+        if (nav != null){ nav.isStopped = state; }
     }
 }

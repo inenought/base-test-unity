@@ -1,0 +1,42 @@
+//////////
+
+salve @espiritoheroico
+
+////////
+
+WASD - MOVEM O PERSONAGEM
+
+SHIFT - FAZ UMA CORRIDA MALUCA
+
+MOUSE HORIZONTAL MOVE O ROBO
+
+CLIQUE DIREITO + MOUSE HORIZONTAL MOVE A CAMERA AO REDOR DO ROBO, MAS É MELHOR FAZER ISSO COM ELE PARADO
+
+////////
+
+NO INIMIGO VC PODE MUDAR AS VARIAVEIS - HASTOFOLLOW - DETECTEDTARGET// Para testar os modos do inimigo de agir - patrulhar, escapar ou perseguir
+
+// FOI OQ DEU PRA FAZER, lembrando que não podia pegar nada da net, então deixei de usar varias funções como DELEGATE e EVENTS, o que poderia ter me poupado tempo,
+mas preferi o jeito mais manual possivel, usando oq eu lembrava.
+
+// eu sei que a camera ficou ruim de usar, eu não tinha lido direito que era pra lanterna seguir a camera, achei que a camera só devia seguir o boneco, e ficou assim
+não deu tempo de mudar
+
+///////
+
+Não usei contrutores, nem cheguei a de fato estruturar bem os inimigos.
+
+/////
+
+DÁ PRA ZERAR O JOGO - só ir até o final do labirinto e colidir com a caixa brilhante lá
+
+//// eu sei que eu baguncei o codigo dos botôes, ai não precisa reclamar disso também, a maioria dos erros eu já peguei, mas preferi poupar o tempo. OBRIGADO <3
+
+/////////////////////////// ///////////////////////////
+/////-----------------///// /////-----------------/////
+/////-----------------///// /////-----------------/////
+/////---------------------- /////----------------------
+/////---------///////////// /////---------/////////////
+/////-------///-------///// /////-------///-------/////
+/////-----------------///// /////-----------------/////
+/////////////////////////// ///////////////////////////
